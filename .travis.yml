@@ -3,7 +3,7 @@ services:
     - dockeer
 
 before_install:
-  - docker build -t stephengrider/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t bajuszmate/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run bajuszmate/react-test nom test -- --coverage
