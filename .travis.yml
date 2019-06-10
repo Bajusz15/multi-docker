@@ -6,7 +6,7 @@ before_install:
   - docker build -t bajuszmate/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run bajuszmate/react-test nom test -- --coverage
+  - docker run bajuszmate/react-test npm test -- --coverage
   
 after_success:
   - docker build  -t bajuiszmate/multi-client ./client
