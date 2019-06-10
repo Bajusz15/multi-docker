@@ -1,6 +1,6 @@
 sudo: required
 services:
-    - dockeer
+    - docker
 
 before_install:
   - docker build -t bajuszmate/react-test -f ./client/Dockerfile.dev ./client

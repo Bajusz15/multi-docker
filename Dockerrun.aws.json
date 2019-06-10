@@ -12,6 +12,12 @@
             "image": "bajuszmate/multi-server",
             "hostname": "api",
             "essential": false
+        },
+        {
+            "name": "worker",
+            "image":"bajuszmate/multi-worker",
+            "hostname": "worker",
+            "essential": false
         }
     ]
 }
