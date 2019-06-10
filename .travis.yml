@@ -1,0 +1,22 @@
+sudo: required
+services:
+    - dockeer
+
+before_install:
+  - docker build -t stephengrider/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run bajuszmate/react-test nom test -- --coverage
+  
+after_success:
+  - docker build  -t bajuiszmate/multi-client ./client
+  - docker build -t bajuszmate/multi-nginx ./nginx
+  - docker build -t bajuszmate/multi-server ./server
+  - docker build -t bajuszmate/multi-worker ./worker 
+  #login to docker CLI
+  - echo ""$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #push those images to docker hub
+  - docker push bajuszmate/multi-client
+  - docker push bajuszmate/multi-nginx
+  - docker push bajuszmate/multi-server
+  - docker push bajuszmate/multi-worker
